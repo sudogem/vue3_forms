@@ -30,7 +30,7 @@
         <form novalidate @submit.prevent="onSubmit">
           <fieldset>
             <CreditCardView :model="state.creditCard"></CreditCardView>
-            <button type="submit">Next</button>
+            <button class="button" type="submit">Next</button>
           </fieldset>
         </form>
       </div>

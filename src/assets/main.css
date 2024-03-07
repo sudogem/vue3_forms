@@ -44,6 +44,14 @@ header {
   color: #fff;
 }
 
+.field-error {
+  list-style-position: inside;
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+  color: red;
+}
+
 button  {
   padding:  19px 39px 18px 39px;
   color:  #FFF;
@@ -59,6 +67,9 @@ button  {
   margin-bottom:  10px;
 }
 
+.button {
+  margin-top: 20px;
+}
 
 input[type="text"],  input[type="password"],  input[type="date"],  input[type="datetime"],  input[type="email"],  input[type="number"],  input[type="search"],  input[type="tel"],  input[type="time"],  input[type="url"],  textarea,  select  {
   background:  rgba(255, 255, 255, 0.1);
@@ -72,7 +83,6 @@ input[type="text"],  input[type="password"],  input[type="date"],  input[type="d
   background-color: #e8eeef;
   color: #8a97a0;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-  margin-bottom: 10px;
 }
 input[type="radio"],  input[type="checkbox"]  {
   margin:  0 4px 8px 0;
@@ -92,7 +102,7 @@ legend  {
 }
 label  {
   display: block;
-  margin-top: 5px;
+  margin-top: 30px;
 }
 .number  {
   background-color:  #5fcf80;

@@ -9,9 +9,9 @@ import state from '@/state';
 
 // const error = ref('');
 
-// function setError(msg) {
-//   error.value = msg;
-// }
+function setError(msg) {
+  state.error.value = msg;
+}
 </script>
 
 <template>
