@@ -36,6 +36,14 @@ header {
 	&:last-child { margin-right: 0; }
 	
 }
+
+.error {
+  background-color: red;
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+}
+
 button  {
   padding:  19px 39px 18px 39px;
   color:  #FFF;
