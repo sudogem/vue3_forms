@@ -1,6 +1,6 @@
 <template>
     <section class="columns">
-      <div v-if="error" class="error">{{ error }}</div>
+      <Error :msg="error" />
       <div class="column">
         <form novalidate @submit.prevent="onSubmit">
           <fieldset>
@@ -81,6 +81,8 @@
 </template>
 
 <script setup>
+  import Error from '@/components/Error.vue'
+
   import states from "@/lookup/states";
   import months from "@/lookup/months";
   import years from "@/lookup/years";
