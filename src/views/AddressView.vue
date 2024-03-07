@@ -1,6 +1,8 @@
 <!-- eslint-disable vue/no-mutating-props -->
 <template>
   <div>
+    <!-- put the contents of <AddressView>this content</AddressView> inside the slot -->
+    <slot></slot>
     <label for="fullName">Full Name</label>
     <input type="text" id="fullName" v-model="model.fullName" :disabled="isDisabled" />
     <label for="company">Company</label>

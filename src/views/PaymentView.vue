@@ -4,8 +4,9 @@
       <div class="column">
         <form novalidate @submit.prevent="onSubmit">
           <fieldset>
-            <legend><span class="number">1</span>Shipping</legend>
-            <AddressView :model="shipping" />
+            <AddressView :model="shipping">
+              <legend><span class="number">1</span>Shipping</legend>
+            </AddressView>
           </fieldset>
         </form>
       </div>
@@ -13,12 +14,13 @@
       <div class="column">
         <form novalidate @submit.prevent="onSubmit">
           <fieldset>
-            <legend><span class="number">2</span>Billing</legend>
-            <label for="sameshipping">
-              <input type="checkbox" v-model="sameAsShipping" />
-              Same as Shipping?
-            </label>
-            <AddressView :model="billing" :isDisabled="sameAsShipping" />
+            <AddressView :model="billing" :isDisabled="sameAsShipping">
+              <legend><span class="number">2</span>Billing</legend>
+              <label for="sameshipping">
+                <input type="checkbox" v-model="sameAsShipping" />
+                Same as Shipping?
+              </label>
+            </AddressView>
           </fieldset>
         </form>
       </div>
