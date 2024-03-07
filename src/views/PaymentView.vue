@@ -3,7 +3,7 @@
       <div class="column">
         <form novalidate @submit.prevent="onSubmit">
           <fieldset>
-            <AddressView :model="shipping">
+            <AddressView :model="state.shipping">
               <legend><span class="number">1</span>Shipping</legend>
             </AddressView>
           </fieldset>
@@ -13,10 +13,10 @@
       <div class="column">
         <form novalidate @submit.prevent="onSubmit">
           <fieldset>
-            <AddressView :model="billing" :isDisabled="sameAsShipping">
+            <AddressView :model="state.billing" :isDisabled="sameAsShipping">
               <legend><span class="number">2</span>Billing</legend>
               <label for="sameshipping">
-                <input type="checkbox" v-model="sameAsShipping" />
+                <input type="checkbox" v-model="state.billing.sameAsShipping" />
                 Same as Shipping?
               </label>
             </AddressView>
@@ -29,7 +29,7 @@
       <div class="column">
         <form novalidate @submit.prevent="onSubmit">
           <fieldset>
-            <CreditCardView :model="card"></CreditCardView>
+            <CreditCardView :model="state.creditCard"></CreditCardView>
             <button type="submit">Next</button>
           </fieldset>
         </form>
@@ -37,43 +37,42 @@
       <div class="column"></div>
     </section>
 
-    <pre>{{ shipping }}</pre>
-    <pre>{{ billing }}</pre>
-    <pre>{{ card }}</pre>
+    <pre>{{ state }}</pre>
 
 </template>
 
 <script setup>
   import AddressView from '@/views/AddressView.vue';
   import CreditCardView from '@/views/CreditCardView.vue';
+  import state from '@/state';
 
-  import { ref, watch } from 'vue';
+  import { watch } from 'vue';
 
   // const error = ref('');
-  const emits = defineEmits(["onError"]);
+  // const emits = defineEmits(["onError"]);
 
-  const shipping = ref({
-    fullName: "John Wick"
-  });
-  const billing = ref({});
-  const card = ref({});
+  // const shipping = ref({
+  //   fullName: "John Wick"
+  // });
+  // const billing = ref({});
+  // const card = ref({});
 
-  const sameAsShipping = ref(false);
+  // const sameAsShipping = ref(false);
 
   function onSubmit() {
     // error.value = "Can't save yet no API";
-    emits("onError", "Can't save yet no API");
+    state.error = "Can't save yet no API";
   }
 
   watch(
-    () => sameAsShipping.value,
+    () => state.billing.sameAsShipping,
     () => {
-      if (sameAsShipping.value) {
-        billing.value.fullName = shipping.value.fullName;
-        billing.value.company = shipping.value.company;
-        billing.value.address1 = shipping.value.address1;
-        billing.value.state = shipping.value.state;
-        billing.value.postalCode = shipping.value.postalCode;
+      if (state.billing.sameAsShipping) {
+        state.billing.fullName = state.shipping.fullName;
+        state.billing.company = state.shipping.company;
+        state.billing.address.address1 = state.shipping.address.address1;
+        state.billing.address.state = state.shipping.address.state;
+        state.billing.address.postalCode = state.shipping.address.postalCode;
       }
     }
   );
