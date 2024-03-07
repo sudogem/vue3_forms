@@ -1,6 +1,5 @@
 <template>
     <section class="columns">
-      <Error :msg="error" />
       <div class="column">
         <form novalidate @submit.prevent="onSubmit">
           <fieldset>
@@ -45,13 +44,13 @@
 </template>
 
 <script setup>
-  import Error from '@/components/Error.vue';
   import AddressView from '@/views/AddressView.vue';
   import CreditCardView from '@/views/CreditCardView.vue';
 
   import { ref, watch } from 'vue';
 
-  const error = ref('');
+  // const error = ref('');
+  const emits = defineEmits(["onError"]);
 
   const shipping = ref({
     fullName: "John Wick"
@@ -62,7 +61,8 @@
   const sameAsShipping = ref(false);
 
   function onSubmit() {
-    error.value = "Can't save yet no API";
+    // error.value = "Can't save yet no API";
+    emits("onError", "Can't save yet no API");
   }
 
   watch(
