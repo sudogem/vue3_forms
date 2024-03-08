@@ -3,7 +3,7 @@
       <div class="column">
         <form novalidate @submit.prevent="onSubmit">
           <fieldset>
-            <AddressView :model="state.shipping">
+            <AddressView :model="model.shipping">
               <legend><span class="number">1</span>Shipping</legend>
             </AddressView>
           </fieldset>
@@ -13,7 +13,7 @@
       <div class="column">
         <form novalidate @submit.prevent="onSubmit">
           <fieldset>
-            <AddressView :model="state.billing" :isDisabled="sameAsShipping">
+            <AddressView :model="model.billing" :isDisabled="state.billing.sameAsShipping">
               <legend><span class="number">2</span>Billing</legend>
               <label for="sameshipping">
                 <input type="checkbox" v-model="state.billing.sameAsShipping" />
@@ -29,7 +29,7 @@
       <div class="column">
         <form novalidate @submit.prevent="onSubmit">
           <fieldset>
-            <CreditCardView :model="state.creditCard"></CreditCardView>
+            <CreditCardView :model="model.creditCard"></CreditCardView>
             <button class="button" type="submit">Next</button>
           </fieldset>
         </form>
@@ -48,6 +48,8 @@
 
   import { watch } from 'vue';
 
+  const model = state.toModel();
+
   // const error = ref('');
   // const emits = defineEmits(["onError"]);
 
@@ -59,7 +61,8 @@
 
   // const sameAsShipping = ref(false);
 
-  function onSubmit() {
+  async function onSubmit() {
+    if (!await model.value.$validate()) return;
     // error.value = "Can't save yet no API";
     state.error = "Can't save yet no API";
   }
