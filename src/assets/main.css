@@ -52,6 +52,10 @@ header {
   color: red;
 }
 
+.sample-data {
+  font-size: 10px;
+}
+
 button  {
   padding:  19px 39px 18px 39px;
   color:  #FFF;
